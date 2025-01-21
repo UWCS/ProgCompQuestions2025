@@ -1,0 +1,17 @@
+{
+    "bigger": 
+    {
+        "max": 100,
+        "weight": 0.4
+    },
+    "example": 
+    {
+        "max": 3,
+        "weight": 0.2
+    },
+    "longer": 
+    {
+        "max": 100,
+        "weight": 0.4
+    }
+}
