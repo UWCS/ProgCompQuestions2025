@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="12" short-name="coben-hard" url="https://polygon.codeforces.com/p61wL60/shishirbandy/coben-hard">
+    <names>
+        <name language="english" value="C.O.B.E.N (Hard Version)"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <tutorials>
+        <tutorial charset="UTF-8" language="english" mathjax="true" path="statements/english/tutorial.tex" type="application/x-tex"/>
+        <tutorial charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/tutorial.html" type="text/html"/>
+        <tutorial language="english" path="statements/.pdf/english/tutorial.pdf" type="application/pdf"/>
+    </tutorials>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="" run-count="1">
+        <testset name="tests">
+            <time-limit>10000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>65</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test description="A tie is possible for the last test case; if we allocate the score bonus $5$ to player 1 and the score bonus $4$ to player 2, both end with a total score of $8$. Therefore, we begin the procedure and uniformly pick one of them at random, which means they each have a $\frac{1}{2}$ chance of being eliminated if those score bonuses are allocated in that manner." method="manual" sample="true"/>
+                <test cmd="gen --tests 3 --max-n 6 --min-n 2 --max-val 10" method="generated"/>
+                <test cmd="gen --tests 18 --max-n 8 --min-n 3 --max-val 16" method="generated"/>
+                <test cmd="gen --tests 20 --max-n 5 --min-n 2 --max-val 8" method="generated"/>
+                <test cmd="gen --tests 20 --max-n 5 --min-n 2 --max-val 28" method="generated"/>
+                <test cmd="gen --tests 13 --max-n 11 --min-n 8 --max-val 48" method="generated"/>
+                <test cmd="gen --tests 13 --max-n 11 --min-n 8 --max-val 68" method="generated"/>
+                <test cmd="gen --tests 13 --max-n 11 --min-n 8 --max-val 88" method="generated"/>
+                <test cmd="gen --tests 13 --max-n 11 --min-n 8 --max-val 108" method="generated"/>
+                <test cmd="gen --tests 13 --max-n 11 --min-n 8 --max-val 10" method="generated"/>
+                <test cmd="gen --tests 5 --max-n 30 --min-n 28 --max-val 10" method="generated"/>
+                <test cmd="gen --tests 5 --max-n 30 --min-n 28 --max-val 40" method="generated"/>
+                <test cmd="gen --tests 5 --max-n 30 --min-n 28 --max-val 70" method="generated"/>
+                <test cmd="gen --tests 5 --max-n 30 --min-n 28 --max-val 170" method="generated"/>
+                <test cmd="gen --tests 8 --max-n 8 --min-n 3 --max-val 108" method="generated"/>
+                <test cmd="gen --tests 8 --max-n 8 --min-n 3 --max-val 16" method="generated"/>
+                <test cmd="gen --tests 8 --max-n 8 --min-n 3 --max-val 500 --min-val 20" method="generated"/>
+                <test cmd="gen --tests 15 --max-n 10 --max-val 1000000" method="generated"/>
+                <test cmd="gen --tests 20 --min-n 3 --max-n 3 --max-val 8" method="generated"/>
+                <test cmd="gen --tests 6 --min-n 4 --max-n 5 --max-val 30" method="generated"/>
+                <test cmd="gen --tests 5 --min-n 8 --max-n 10 --max-val 1000" method="generated"/>
+                <test cmd="gen --tests 5 --min-n 9 --max-n 12 --max-val 2000" method="generated"/>
+                <test cmd="gen --tests 4 --min-n 12 --max-n 14 --max-val 10000" method="generated"/>
+                <test cmd="gen --tests 4 --min-n 24 --max-n 25 --max-val 100000" method="generated"/>
+                <test cmd="gen --tests 2 --min-n 38 --max-n 41 --max-val 1000000" method="generated"/>
+                <test cmd="gen --tests 2 --min-n 69 --max-n 69 --max-val 5000000" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 69 --max-n 69 --max-val 1" method="generated"/>
+                <test cmd="gen --tests 2 --min-n 69 --max-n 69 --max-val 11" method="generated"/>
+                <test cmd="gen --tests 2 --min-n 70 --max-n 70 --max-val 111" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 81 --max-n 82 --max-val 10000000" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 91 --max-n 97 --max-val 100000000" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 99 --max-n 99 --max-val 100000000" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 99 --max-n 99 --max-val 100" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 99 --max-n 99 --max-val 6000" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 100 --max-n 100 --max-val 100000000" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 100 --max-n 100 --max-val 400" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 100 --max-n 100 --max-val 30000" method="generated"/>
+                <test cmd="gen --tests 4 --min-n 12 --max-n 26 --max-val 69696969" method="generated"/>
+                <test cmd="gen --tests 4 --min-n 12 --max-n 14 --max-val 68" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 100 --max-n 150 --max-val 300000" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 300" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 20" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 2" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 34934398" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 999999999" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 3493439" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 349343" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 349344" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 349345" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 34934" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 4" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 8" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 10" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 16" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 60" method="generated"/>
+                <test cmd="gen --tests 1 --min-n 150 --max-n 150 --max-val 120" method="generated"/>
+                <test cmd="genShuffle --tests 10 --min-n 3 --max-n 15" method="generated"/>
+                <test cmd="genShuffle --tests 12 --min-n 10 --max-n 12" method="generated"/>
+                <test cmd="genShuffle --tests 7 --min-n 15 --max-n 21" method="generated"/>
+                <test cmd="genShuffle --tests 3 --min-n 30 --max-n 40" method="generated"/>
+                <test cmd="genShuffle --tests 3 --min-n 50 --max-n 50" method="generated"/>
+                <test cmd="genShuffle --tests 2 --min-n 75 --max-n 75" method="generated"/>
+                <test cmd="genShuffle --tests 1 --min-n 100 --max-n 100" method="generated"/>
+                <test cmd="genShuffle --tests 1 --min-n 120 --max-n 120" method="generated"/>
+                <test cmd="genShuffle --tests 1 --min-n 150 --max-n 150" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+            <file path="files/tutorial.tex"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/checker.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="files/checker.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/gen.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="files/gen.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/genShuffle.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="files/genShuffle.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker type="testlib">
+            <source path="files/checker.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>0</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests/>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/crcsl.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="solutions/crcsl.exe" type="exe.win32"/>
+                <extra-tags>
+                    <extra-tag tag="time-limit-exceeded" testset="tests"/>
+                </extra-tags>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/magicksnow.rs" type="rust"/>
+                <binary path="solutions/magicksnow.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/main.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="solutions/main.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/mainBadChoose.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="solutions/mainBadChoose.exe" type="exe.win32"/>
+                <extra-tags>
+                    <extra-tag tag="rejected" testset="tests"/>
+                </extra-tags>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/mainSlowRight.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="solutions/mainSlowRight.exe" type="exe.win32"/>
+                <extra-tags>
+                    <extra-tag tag="accepted" testset="tests"/>
+                </extra-tags>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/mainW.cpp" type="cpp.gcc14-64-msys2-g++23"/>
+                <binary path="solutions/mainW.exe" type="exe.win32"/>
+                <extra-tags>
+                    <extra-tag tag="rejected" testset="tests"/>
+                </extra-tags>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <documents>
+        <document path="documents/tutorial.txt" type="text/plain"/>
+    </documents>
+    <tags>
+        <tag value="fft"/>
+        <tag value="implementation"/>
+        <tag value="number theory"/>
+    </tags>
+</problem>
