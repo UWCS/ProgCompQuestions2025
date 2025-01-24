@@ -11,7 +11,7 @@
 
 
 
-<title>8</title>
+<title>9</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -352,121 +352,65 @@ display: none;
 </div>
 
 
-<div id="viii.-c.o.b.e.n" class="section level1">
-<h1>VIII. C.O.B.E.N</h1>
-<p><strong>Skiwi</strong> the Frog enters the <strong>Mathmos</strong>
-into a multiplayer Nim tournament. However, they don’t know the optimal
-strategy and thus play no better than random.</p>
-<p>You are given <span class="math inline">\(n\)</span> players with
-their current scores <span class="math inline">\(p_1, p_2, \ldots,
-p_n\)</span> and <span class="math inline">\(n\)</span> non-negative
-bonuses <span class="math inline">\(s_1, s_2, \ldots, s_n\)</span>. In
-the next round, each player will randomly receive one of the bonuses.
-The player with the lowest total score after the round will be
-eliminated. <strong>In the event of a tie for the lowest total score
-among <span class="math inline">\(k\)</span> players, one of them is
-eliminated uniformly at random, with each having a probability of <span class="math inline">\(\frac{1}{k}\)</span>.</strong></p>
-<p>Your task is to calculate, for each player <span class="math inline">\(i\)</span>, the exact probability of being
-eliminated after the next round, returned modulo <span class="math inline">\(998244353\)</span>.</p>
+<div id="ix.-freshers-sum" class="section level1">
+<h1>IX. Fresher’s Sum</h1>
+<p><strong>Skiwi</strong> the Frog is writing his seminal paper on the
+wonderful beauty of the fractions. The <strong>smaller</strong> the
+denominator (but still positive), the more beautiful the fraction. Skiwi
+wants a nice way of finding the most beautiful fraction that lies
+strictly between two other fractions.</p>
+<p>More precisely, find the fraction <span class="math inline">\(\frac{a}{b}\)</span> with the <strong>smallest
+positive denominator</strong> <span class="math inline">\(b\)</span>
+such that <span class="math inline">\(\frac{p}{q} &lt; \frac{a}{b} &lt;
+\frac{u}{v}\)</span>.</p>
 <div id="input" class="section level3">
 <h3>Input</h3>
 <p>The first line contains <span class="math inline">\(t \\; (1
-\leqslant t \leqslant 60)\)</span>, the number of test cases.</p>
+\leqslant t \leqslant 1000)\)</span>, the number of test cases.</p>
 <p>Then, <span class="math inline">\(t\)</span> test cases follow, and
 for each test case:</p>
 <ul>
-<li>The first line contains one integer <span class="math inline">\(n
-\\, (1 \leqslant n \leqslant 150)\)</span>.</li>
-<li>The second line contains <span class="math inline">\(n\)</span>
-space-separated integers, where <span class="math inline">\(p_i \\, (0
-\leqslant p_i \leqslant 10^9)\)</span> represents the current score of
-player <span class="math inline">\(i\)</span>.</li>
-<li>The third line contains <span class="math inline">\(n\)</span>
-space-separated integers, where <span class="math inline">\(s_i \\, (0
-\leqslant s_i \leqslant 10^9)\)</span> represents the score bonus
-associated with the <span class="math inline">\(i^{\text{th}}\)</span>
-place.</li>
+<li>The first line contains four integers <span class="math inline">\(p,q,u,v \\; (1 \leqslant p,q,u,v \leqslant
+10^{18})\)</span>, representing <span class="math inline">\(\frac{p}{q}\)</span> and <span class="math inline">\(\frac{u}{v}\)</span> with <span class="math inline">\(\frac{p}{q} &lt; \frac{u}{v}\)</span>.</li>
 </ul>
 </div>
 <div id="subtasks" class="section level3">
 <h3>Subtasks</h3>
-<div id="subtask-1-16" class="section level4">
-<h4>Subtask 1 [16%]</h4>
-<p><span class="math inline">\(n \leqslant 8\)</span> and it is
-guaranteed that no matter how the bonuses are allocated, there will
-never be a tie between two players.</p>
+<div id="subtask-1-15" class="section level4">
+<h4>Subtask 1 [15%]</h4>
+<p><span class="math inline">\(p,q,u,v \leqslant 10^5\)</span></p>
 </div>
-<div id="subtask-2-34" class="section level4">
-<h4>Subtask 2 [34%]</h4>
-<p>It is guaranteed that no matter how the bonuses are allocated, there
-will never be a tie between two players.</p>
-</div>
-<div id="subtask-3-50" class="section level4">
-<h4>Subtask 3 [50%]</h4>
+<div id="subtask-2-85" class="section level4">
+<h4>Subtask 2 [85%]</h4>
 <p>No further constraints.</p>
 </div>
 </div>
 <div id="output" class="section level3">
 <h3>Output</h3>
-<p>For each test case, output a single line containing <span class="math inline">\(n\)</span> integers, space-separated, where the
-<span class="math inline">\(i^{\text{th}}\)</span> integer represents
-the probability <span class="math inline">\(\pmod{998244353}\)</span>
-that player <span class="math inline">\(i\)</span> is eliminated.</p>
-<p>It can be shown that the expected value has the form <span class="math inline">\(\frac{P}{Q}\)</span>, where <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span> are non-negative coprime integers, and
-<span class="math inline">\(Q \neq 0\)</span>. Report the value of <span class="math inline">\(P \cdot Q^{-1} \pmod{998244353}\)</span>.</p>
+<p>For each test case, output two integers <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, space separated, that satisfies <span class="math inline">\(\frac{p}{q} &lt; \frac{a}{b} &lt;
+\frac{u}{v}\)</span> and with <span class="math inline">\(b\)</span>
+minimal. If there are multiple correct answers, you may output any.</p>
 </div>
 <div id="example-input" class="section level3">
 <h3>Example Input</h3>
-<pre><code>3
-3
-60 40 20
-100 50 25
-6
-7495 4929 5117 6657 5763 7521
-5767 4037 2833 2307 1730 1442
-2
-3 4
-5 4</code></pre>
+<pre><code>4
+43 197 17 77
+5 4 4 3
+3 17 169 931
+227 730 11 35</code></pre>
 </div>
 <div id="example-output" class="section level3">
 <h3>Example Output</h3>
-<pre><code>166374059 332748118 499122177 
-0 58230921 58230921 144190851 737591661 0 
-249561089 748683265 </code></pre>
+<pre><code>7 32
+9 7
+5 28
+5 16</code></pre>
 </div>
 <div id="note" class="section level3">
 <h3>Note</h3>
-<p>We have 3 players with current scores <span class="math inline">\(p =
-[60, 40, 20]\)</span> and bonus options <span class="math inline">\(s =
-[100, 50, 25]\)</span>. There are <span class="math inline">\(3! =
-6\)</span> ways to assign the 3 bonuses, and in each assignment, the
-player with the lowest total <span class="math inline">\((p_i +
-s_{\pi(i)})\)</span> is eliminated. Enumerating:</p>
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\([160, 90, 45] \to\)</span> Player 3 is
-eliminated.</li>
-<li><span class="math inline">\([160, 65, 70] \to\)</span> Player 2 is
-eliminated.</li>
-<li><span class="math inline">\([110, 140, 45] \to\)</span> Player 3 is
-eliminated.</li>
-<li><span class="math inline">\([110, 65, 120] \to\)</span> Player 2 is
-eliminated.</li>
-<li><span class="math inline">\([85, 140, 45] \to\)</span> Player 3 is
-eliminated.</li>
-<li><span class="math inline">\([85, 90, 120] \to\)</span> Player 1 is
-eliminated.</li>
-</ol>
-<p><strong>Player 1</strong> is eliminated in 1 of 6 permutations (<span class="math inline">\(\frac{1}{6}\)</span>).</p>
-<p><strong>Player 2</strong> is eliminated in 2 of 6 permutations (<span class="math inline">\(\frac{1}{3}\)</span>).</p>
-<p><strong>Player 3</strong> is eliminated in 3 of 6 permutations (<span class="math inline">\(\frac{1}{2}\)</span>).</p>
-<p>A tie is possible for the last test case; if we allocate the score
-bonus <span class="math inline">\(5\)</span> to player 1 and the score
-bonus <span class="math inline">\(4\)</span> to player 2, both end with
-a total score of <span class="math inline">\(8\)</span>. Therefore, we
-begin the procedure and uniformly pick one of them at random, which
-means they each have a <span class="math inline">\(\frac{1}{2}\)</span>
-chance of being eliminated if those score bonuses are allocated in that
-manner. The probabilities of elimination over all permutations are <span class="math inline">\(\frac{3}{4}\)</span> for player 1 and <span class="math inline">\(\frac{1}{4}\)</span> for player 2.</p>
+<p>For the second test case, it can be shown that <span class="math inline">\(\frac{5}{4} &lt; \frac{9}{7} &lt;
+\frac{4}{3}\)</span> and <span class="math inline">\(7\)</span> is the
+smallest possible integral denominator that fits.</p>
 </div>
 <div id="skiwi" class="section level3">
 <h3>Skiwi</h3>
