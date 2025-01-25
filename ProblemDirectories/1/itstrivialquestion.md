@@ -58,7 +58,7 @@ A says "it is trivial" 2 times and says "it is not trivial" 2 times.
 R wins
 ```
 
-Since R says "it is trivial" 4 times (the target amount for the game), R wins.  
+**Explanation:** Since R says "it is trivial" 4 times (the target amount for the game), R wins.  
 
 
 ### Sample 2
@@ -92,7 +92,7 @@ R wins
 A wins
 ```
 
-For the first game, R wins because R says "it is trivial" 2 times.
+**Explanation:** For the first game, R wins because R says "it is trivial" 2 times.
 For the second game, A wins because A says "it is trivial" 1 time.
 
 --- 
