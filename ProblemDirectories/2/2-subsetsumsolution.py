@@ -1,3 +1,4 @@
+# 2-subsetsum solution
 import sys 
 
 n = int(sys.stdin.readline())
