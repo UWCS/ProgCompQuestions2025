@@ -1,0 +1,490 @@
+
+\documentclass{solutionclass}
+
+ \usepackage{graphicx}
+\usepackage[nomessages]{fp}
+\usepackage{xstring}
+
+
+\newcounter{count}
+\FPset\scalefactor{1}
+
+\newcommand\ppt[1]{%
+    \StrChar{#1}{\thecount}[\chardigit]%
+    \FPmul\scalefactor{\scalefactor}{0.96}% 
+    \scalebox{\scalefactor}{\chardigit}%
+    \stepcounter{count}%
+    \ifnum\value{count}<110%
+        \expandafter\ppt\expandafter{#1}%
+    \fi%
+}
+
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\parindent}{0pt}
+
+\newcommand{\cont}{\subseteq}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage[mathscr]{euscript}
+\let\euscr\mathscr \let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{float}
+\usepackage{algpseudocode}
+\usepackage{relsize}
+%\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue,
+%citecolor=blue, urlcolor=blue]{hyperref}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ddx}{\frac{d}{dx}}
+\newcommand{\dfdx}{\frac{df}{dx}}
+\newcommand{\ddxp}[1]{\frac{d}{dx}\left( #1 \right)}
+\newcommand{\dydx}{\frac{dy}{dx}}
+\let\ds\displaystyle
+\newcommand{\intx}[1]{\int #1 \, dx}
+\newcommand{\intt}[1]{\int #1 \, dt}
+\newcommand{\defint}[3]{\int_{#1}^{#2} #3 \, dx}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\un}{\cup}
+\newcommand{\inter}{\cap}
+\newcommand{\ps}{\mathscr{P}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newtheorem*{sol}{Solution}
+\newtheorem*{claim}{Claim}
+\newtheorem{problem}{Problem}
+\newcommand{\tpmod}[1]{{\text{ mod } #1}}
+
+\def\bN{\mbb{N}}
+\def\bC{\mbb{C}}
+\def\bR{\mbb{R}}
+\def\bQ{\mbb{Q}}
+\def\bZ{\mbb{Z}}
+ \usepackage[usenames,dvipsnames]{xcolor} 
+ \renewcommand{\c}[1]{\color{#1}}
+  \newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\tf}[2]{\tfrac{#1}{#2}}
+\newcommand{\x}{\cdot}
+\newcommand{\tu}[1]{\textup{#1}} 
+\colorlet{r}{RubineRed}
+\colorlet{o}{OrangeRed}
+\colorlet{c}{cyan}
+\colorlet{t}{teal}
+\colorlet{l}{lime}
+\colorlet{f}{Fuchsia}
+\colorlet{m}{magenta}
+\colorlet{g}{ForestGreen}
+\colorlet{b}{blue}
+\colorlet{y}{YellowOrange}
+\colorlet{w}{white}
+\colorlet{p}{Purple}
+\usetikzlibrary{positioning}
+%\usepackage{tabto}
+\newcommand{\tab}{ \hspace{3pt} }
+
+\newtheorem{thm}{Claim}
+\newcommand{\statetheoremhoriz}[2][430pt]{
+ \par\noindent\tikzstyle{mybox} = [draw=blue,left color=cyan!50,
+  right color=cyan!5,thick,rectangle,inner sep=6pt]
+ \begin{tikzpicture}
+  \node [mybox] (box){%
+   \begin{minipage}{#1}{#2}\end{minipage}
+  };
+ \end{tikzpicture}
+}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\makeatletter
+\newcommand{\biggg}{\bBigg@\thr@@}
+\newcommand{\Biggg}{\bBigg@{3.5}}
+\def\bigggl{\mathopen\biggg}
+\def\bigggm{\mathrel\biggg}
+\def\bigggr{\mathclose\biggg}
+\def\Bigggl{\mathopen\Biggg}
+\def\Bigggm{\mathrel\Biggg}
+\def\Bigggr{\mathclose\Biggg}
+\makeatother
+
+
+\DeclareRobustCommand{\bbone}{\text{\usefont{U}{bbold}{m}{n}1}}
+
+\DeclareMathOperator{\EX}{\mathbb{E}}% expected value
+
+\usepackage{pyluatex} 
+
+ \begin{python}
+ import sympy as sp
+ #def mtl(matrix):
+    # Convert the matrix to sympy Matrix for better handling of fractions
+   # sympy_matrix = sp.Matrix(matrix)
+    # Use sympify to convert fractions to Rational
+   # sympy_matrix = sympy_matrix.applyfunc(lambda x: sp.nsimplify(x, rational=True))
+    # Convert the matrix to LaTeX
+    #latex_code = sp.latex(sympy_matrix)
+    #return latex_code
+ def mtl(matrix):
+    # Convert the matrix to sympy Matrix for better handling of fractions
+    sympy_matrix = sp.Matrix(matrix)
+    # Use sympify to convert fractions to Rational
+    sympy_matrix = sympy_matrix.applyfunc(lambda x: sp.nsimplify(x, rational=True))
+    
+    # Initialize LaTeX code with the begin statements for equation and array
+    latex_code = "\\begin{bmatrix}"
+
+    #  Iterate over each element to construct the LaTeX code for the matrix
+    for i in range(sympy_matrix.rows):
+        # Check if the row contains any fractions
+        row_contains_fraction = any(isinstance(e, sp.Rational) and e.q != 1 for e in sympy_matrix.row(i))
+        # Add elements to the LaTeX code
+        for j in range(sympy_matrix.cols):
+            latex_code += sp.latex(sympy_matrix[i, j])
+            if j < sympy_matrix.cols - 1:  # Add column separator if not the last column
+                latex_code += " & "
+        # End of row
+        # Increase space if the row contains a fraction
+        if row_contains_fraction:
+            latex_code += " \\\\[3pt]"
+        else:
+            latex_code += " \\\\"
+            
+    # Close the bmatrix and equation environments
+    latex_code += "\\end{bmatrix}"
+
+    return latex_code
+\end{python}
+
+
+\newenvironment{myalgo}
+  {% Begin code
+    \par\noindent\minipage{\linewidth}%
+    \vspace{1em}
+    \algorithmic[1]
+  }
+  {% End code
+    \endalgorithmic
+    \endminipage
+    \vspace{1em}
+  }
+  
+  
+ 
+
+\newcommand{\randint}[2]{\py{random.randint(#1, #2)}}
+
+\begin{document}
+ \setlength{\parindent}{0pt}
+% EVERYTHING ABOVE THIS LINE IS JUST PREABLE, NO NEED TO MESS WITH IT.__________________________________________________________________________________________
+%
+
+\lhead{Stochastic Processes}
+\chead{Page \thepage \:out of \pageref{LastPage}}
+\rhead{\today}
+\cfoot{}
+ 
+% \maketitle
+\begin{center}
+\Huge \ppt{HW 3} \normalsize
+\end{center}
+
+\begin{python}
+import sympy as sp
+
+def sqr():
+# Define the symbol
+	x = sp.symbols('x')
+
+# Square the symbol
+	x_squared = x**3
+
+# Convert to LaTeX
+	x_squared_latex = sp.latex(x_squared)
+	return x_squared_latex
+
+# Make available to LaTeX
+\end{python}
+
+\begin{enumerate}
+
+\item \begin{solution}[]
+
+Consider the following graph representing the Markov chain of possibilities, where $\c m N = N_1 + N_2$ \\
+
+ \begin{tikzpicture}[node distance=2cm]
+
+% Define node style
+\tikzstyle{every node}=[circle, draw=black, fill=none, inner sep=2pt,font=\large]
+
+% Nodes
+\node[circle, draw=cyan, line width=0.66mm, inner sep=2pt] (0) at (1,-1) {0};
+\node[circle, draw=teal, line width=0.66mm, inner sep=2pt] (1) at (3,-1) {1};
+\node[circle, draw=ForestGreen, line width=0.66mm, inner sep=2pt] (2) at (5,-1) {2};
+\node[circle, draw=y, line width=0.66mm, inner sep=2pt] (3) at (7,-1) {3};
+\node[draw=none, fill=none] (dots) at (8.5,-1) {$\cdots$};
+\node[circle, draw=magenta, line width=0.66mm, inner sep=2pt,font=\small] (4) at (10,-1) {$N-1$};
+\node[circle, draw=red, line width=0.66mm, inner sep=2pt] (5) at (12,-1) {$N$};
+
+% ... (You would continue placing all nodes in similar fashion)
+
+% Edges
+\tikzstyle{every node}=[]
+
+\draw[dashed, -{Latex[length=2mm]}] (0) edge[loop left, looseness=13] node[above, xshift=2.5mm, yshift=2mm]  {$\c c 1$} (0);
+\draw[dashed][-{Latex[length=2mm]}] (1) to[out=40,in=140] node[above] {$p$} (2);
+\draw[dashed][-{Latex[length=2mm]}] (2) to[out=40,in=140] node[above] {$p$} (3);
+\draw[dashed][-{Latex[length=2mm]}] (3) to[out=40,in=140] node[above] {$p$} (dots);
+\draw[dashed][-{Latex[length=2mm]}] (dots) to[out=40,in=140] node[above] {$p$} (4);
+\draw[dashed][-{Latex[length=2mm]}] (4) to[out=40,in=140] node[above] {$p$} (5);
+
+\draw[dashed][-{Latex[length=2mm]}] (3) to[out=-140,in=-40] node[below] {$q$} (2);
+\draw[dashed][-{Latex[length=2mm]}] (2) to[out=-140,in=-40] node[below] {$q$} (1);
+\draw[dashed][-{Latex[length=2mm]}] (1) to[out=-140,in=-40]  node[below] {$q$} (0);
+\draw[dashed][-{Latex[length=2mm]}] (dots) to[out=-140,in=-40]  node[below] {$q$} (3);
+\draw[dashed, -{Latex[length=2mm]}] (5) edge[loop right, looseness=13] node[above, xshift=-3.33mm, yshift=2mm] {$\c r 1$} (5);
+\draw[dashed][-{Latex[length=2mm]}] (4) to[out=-140,in=-40]  node[below] {$q$} (dots);
+% ... (You would continue drawing all edges in similar fashion)
+
+\end{tikzpicture} \\
+
+\pagecolor{white}
+
+Using first step decomposition, we can see that \\
+
+\begin{tikzpicture}[
+    every node/.style={circle, draw=black, inner sep=2pt, font=\large},
+    money/.style={circle, draw=red, fill=red!20, line width=0.66mm, inner sep=4pt},
+    edge/.style={-{Latex[length=2mm]}, thick}
+]
+\tikzstyle{every node}=[circle, draw=black, fill=none, inner sep=4pt,font=\large]
+
+% Nodes
+\node[circle, draw=cyan, line width=0.66mm, inner sep=4pt] (1) at (0, 0) {1};
+\node[money] (2) at (-2, -2) {2};
+\node[money] (3) at (2, -2) {3};
+\node[money] (4) at (-3.5, -4) {4};
+\node[circle, draw=cyan, line width=0.66mm, inner sep=4pt] (5) at (-0.5, -4) {5};
+
+% Edges with weights
+\tikzstyle{every node}=[]
+
+\draw[edge] (1) -- (2) node[midway, left, yshift=0.25cm,xshift=0.1cm] {2};
+\draw[edge] (1) -- (3) node[midway, right, yshift=0.25cm,,xshift=-0.1cm] {8};
+\draw[edge] (2) -- (4) node[midway, left, yshift=0.25cm,,xshift=0.1cm] {4};
+\draw[edge] (2) -- (5) node[midway, right, yshift=0.25cm,,xshift=-0.1cm] {9};
+
+\end{tikzpicture}
+
+
+\begin{align*}
+\c c h_{0,0} &\c c= 1 \\
+\c t h_{1,0} &\c t= qh_{0,0} + ph_{2,0} \\
+\c g h_{2,0} &\c g= qh_{1,0} + ph_{3,0} \\
+\c o \vdots \\
+\c m h_{N-1,0} &\c m = qh_{N-2,0} + ph_{N,0} \\
+\c{red} h_{N,0} &\c{red} = 0 
+\end{align*} Since if you get all the coins and win, you can't lose! \\
+
+For $\c g 1 < n \leqslant N$, we have $\c t h_{n-1,0} = qh_{n-2,0} + ph_{n,0}$ \\
+
+Solving this for $\c f h_{n-1,0}$ yields 
+\[\Large \c{violet} h_{n,0} = \tf{1}{p} h_{n-1,0} - \tf{q}{p} h_{n-2,0}\]
+This is a second order homogeneous linear difference equation with constant coefficients, which can be solved with the auxiliary polynomial. \\
+
+Let ansatz $\c o c r^n = h_{n,0}$, then 
+\[\Large \c{violet} c r^n = \tf{1}{p} \x c r^{n-1} - \tf{q}{p}\x c r^{n-2} \implies r^2 = \tf1p r - \tf{q}{p}\]
+The roots of this polynomial are $\c t r = \f{1 \pm \sqrt{1-4pq}}{2p}$, and since $\c t q = 1-p$, we have \\
+\[\c t  r = \f{1 \pm |2p-1|}{2p} = \Biggg\{\underbrace{\begin{cases}
+\f1p - 1 \tu{ if } 0 < p \leqslant \f1p \\
+1 \tu{ else }
+\end{cases}}_{+}, \underbrace{\begin{cases}
+\f1p - 1 \tu{ if } \f12 \leqslant p \leqslant 1 \\
+1 \tu{ else }
+\end{cases}}_{-}
+\Biggg\}
+\]
+Clearly \& luckily, since both roots are the same no matter which case we take, it suffices to say
+\[\c m r = \left\{1,\f1p - 1\right\} \implies h_{n,0} = c_1 \left(\f1p - 1\right)^n + c_2 \x 1\]
+The boundary conditions are \begin{align*}
+\c c h_{0,0} &\c c= 1 \\
+\c{red} h_{N,0} &\c{red} = 0 \\
+\end{align*}
+Thus, we can plug them in to resolve the coefficients $\c m c_1,c_2$ \\
+\[\c t \begin{cases} \c c 1 = c_1 \left(\f1p - 1\right)^0 + c_2 = c_1 + c_2 \\[6pt] \c r 0 = c_1 \left(\f1p - 1\right)^N + c_2\end{cases}\]
+Doing some algebra, \[\c g c_2 = 1 - c_1 \implies 0 = c_1\left(\f1p - 1\right)^N + 1 - c_1 \implies c_1 = \f{1}{1-\left(\f1p - 1\right)^N} \implies\]
+\[\c g c_2 = 1 - \f{1}{1-\left(\f1p - 1\right)^N}\]
+Thus, we have \begin{align*}
+\c f h_{N_1,0} &\c f= \f{1}{1-\left(\f1p - 1\right)^N} \left(\f1p - 1\right)^{N_1} + 1 - \f{1}{1-\left(\f1p - 1\right)^N} \\
+&\c f= \f{1}{1-\left(\f1p - 1\right)^{N_1 + N_2}} \left(\f1p - 1\right)^{N_1} + 1 - \f{1}{1-\left(\f1p - 1\right)^{N_1 + N_2}}
+\end{align*}
+
+
+\end{solution}
+
+Bruh
+
+\begin{tikzpicture}[
+    every node/.style={circle, draw=black, inner sep=2pt, font=\large},
+    money/.style={circle, draw=red, fill=red!20, line width=0.66mm, inner sep=4pt},
+    edge/.style={-{Latex[length=2mm]}, thick}
+]
+\tikzstyle{every node}=[circle, draw=black, fill=none, inner sep=4pt,font=\large]
+
+% Nodes
+\node[circle, draw=cyan, line width=0.66mm, inner sep=4pt] (1) at (0, 0) {1};
+\node[money] (2) at (-2, -2) {2};
+\node[money] (3) at (2, -2) {3};
+\node[money] (4) at (-3.5, -4) {4};
+\node[circle, draw=cyan, line width=0.66mm, inner sep=4pt] (5) at (-0.5, -4) {5};
+
+% Edges with weights
+\tikzstyle{every node}=[]
+
+\draw[edge] (1) -- (2) node[midway, left, yshift=0.25cm,xshift=0.1cm] {2};
+\draw[edge] (1) -- (3) node[midway, right, yshift=0.25cm,,xshift=-0.1cm] {8};
+\draw[edge] (2) -- (4) node[midway, left, yshift=0.25cm,,xshift=0.1cm] {4};
+\draw[edge] (2) -- (5) node[midway, right, yshift=0.25cm,,xshift=-0.1cm] {9};
+
+\end{tikzpicture}
+
+
+\item
+\begin{solution}[]
+
+The graph representation of $\c m (X_n)_{n \geqslant 0}$ is: \\
+
+ \begin{tikzpicture}[node distance=2cm]
+
+% Define node style
+\tikzstyle{every node}=[circle, draw=black, fill=none, inner sep=2pt,font=\large]
+
+% Nodes
+\node[circle, draw=cyan, line width=0.66mm, inner sep=2pt] (D) at (0,3) {D};
+\node[circle, draw=g, line width=0.66mm, inner sep=2pt] (A) at (-2,1) {A};
+\node[circle, draw=g, line width=0.66mm, inner sep=2pt] (B) at (-0.5,1) {B};
+\node[circle, draw=g, line width=0.66mm, inner sep=2pt] (C) at (-1.25,-1) {C};
+\node[circle, draw=cyan, line width=0.66mm, inner sep=2pt] (E) at (1,1) {E};
+\node[circle, draw=cyan, line width=0.66mm, inner sep=2pt] (F) at (2.5,1) {F};
+\node[circle, draw=orange, line width=0.66mm, inner sep=2pt] (K) at (1,-1) {K};
+\node[circle, draw=orange, line width=0.66mm, inner sep=2pt] (G) at (2.5,-1) {G};
+
+% ... (You would continue placing all nodes in similar fashion)
+
+% Edges
+\tikzstyle{every node}=[]
+
+
+%\draw[dashed][-{Latex[length=2mm]}] (D) to[out=40,in=140] node[above] {$\f16$} (A);
+\draw[dashed][-{Latex[length=2mm]}] (D) to node[above, xshift=-2.5mm, yshift=-2mm] {$\f16$} (A);
+\draw[dashed][-{Latex[length=2mm]}] (D) to node[above, xshift=-1.5mm, yshift=-2mm] {$\f14$} (B);
+\draw[dashed][-{Latex[length=2mm]}] (D) to node[above, xshift=-2.5mm, yshift=-3mm] {$\f13$} (E);
+\draw[dashed][-{Latex[length=2mm]}] (D) to node[above, xshift=-1.5mm, yshift=0.66mm] {$\f14$} (F);
+
+\draw[dashed][-{Latex[length=2mm]}] (A) to node[above] {$1$} (B);
+\draw[dashed][-{Latex[length=2mm]}] (B) to node[right] {$1$} (C);
+\draw[dashed][-{Latex[length=2mm]}] (C) to node[left] {$1$} (A);
+
+\draw[dashed][-{Latex[length=2mm]}] (E) to node[below] {$\f13$} (F);
+\draw[dashed][-{Latex[length=2mm]}] (E) to node[right] {$\f13$} (K);
+
+\draw[dashed][-{Latex[length=2mm]}] (F) to[out=40,in=40] node[above] {$\f23$} (D);
+\draw[dashed][-{Latex[length=2mm]}] (F) to node[right] {$\f13$} (G);
+
+\draw[dashed][-{Latex[length=2mm]}] (G) to node[below] {$1$} (K);
+
+\draw[dashed][-{Latex[length=2mm]}] (K) to[out=-90,in=270] node[below] {$\f13$} (G);
+
+\draw[dashed, -{Latex[length=2mm]}] (E) edge[loop left, looseness=8] node[below, xshift=2.5mm, yshift=-0.66mm]  {$\f13$} (E);
+
+\draw[dashed, -{Latex[length=2mm]}] (K) edge[loop left, looseness=8] node[below, xshift=2.5mm, yshift=-0.66mm]  {$\f23$} (K);
+% ... (You would continue drawing all edges in similar fashion)
+
+\end{tikzpicture} \\
+a)\tab Then, to calculate $\c g \EX[V_E \mid X_0 = D]$, we can use the formula \[\c g \EX[V_E \mid X_0 = D] = \f{h_{DE}}{1 - f_E}\]
+$\c t h_{DE} = \f13 + \f16 h_{AE} + \f14 h_{BE} + \f14 h_{FE} = \f13 + \f14 h_{FE}$ since $\c t A \not\rightarrow E$ and $\c t B \not\rightarrow E$ \\
+
+$\c t h_{FE} = \f23 h_{DE} + \f13 h_{GE} = \f23 h_{DE}$ since $\c t G \not\rightarrow E$ \\
+
+Solving this system yields $\c f h_{DE} = \f25, h_{FE} = \f{4}{15}$ \\
+
+Calculating $\c m f_E$ can be done similarly; 
+\[\c m f_E = \f13 + \f13 + h_{FE} = \f13 + \f13 \x \f{4}{15} = \f{19}{45}\]
+Then, the answer is simply 
+ \[\c g \EX[V_E \mid X_0 = D] = \f{h_{DE}}{1 - f_E} = \f{\f25}{1 - \f{19}{45}} = \f{9}{13}\] \\
+ 
+ b)\tab \begin{align*}
+ \c o f_G = h_{GG} &\c o = \f13 = \f23 h_{KG}  \\
+ \c o h_{KG} &\c o = \f13 + \f23 h_{KG}  \\
+ \end{align*}
+Solving this system yields that $\c r f_G = h_{KG} = 1$, thus the state G is recurrent as it is guaranteed that G will return to itself once, and since a Markov chain is memoryless, it will continue to do so, thus infinitely often.  \\
+
+c)\tab To check the probability that $\c{violet} D \to G$ first without hitting any other recurrent states along the way (that being $\c o \{A,B,C,K\}$), it suffices to use the same methodology as above but additionally $\c g h_{KG} = 0$ as we are not allowed to visit there. \\
+\begin{align*}
+ \c o h_{DG} &\c o = \f13 h_{EG} + \f14 h_{FG} \\[4pt]
+ \c o h_{EG} &\c o = \f13 h_{EG} + \f13 h_{FG} + \underbrace{\f13 h_{KG}}_{0} \\[-10pt]
+ \c o h_{FG} &\c o = \f13 + \f23 h_{DG}
+ \end{align*}
+Resolving this linear system yields 
+\begin{align*}
+ \c r h_{DG} &\c r = \f{5}{26} \\[2pt]
+ \c r h_{EG} &\c r =  \f{3}{13}\\[2pt]
+ \c r h_{FG} &\c r = \f{6}{13}
+ \end{align*}
+ and so $\c g h_{DG} = \f{5}{26}$ \\
+
+d)\tab Yes, it does have a stationary distribution. The uniform distribution works just fine, let 
+\[\c b \pi = \begin{bmatrix} \f18 & \f18 &\f18 &\f18 &\f18 &\f18 &\f18 &\f18\end{bmatrix}\] then 
+\[\c b \pi P = \py{mtl([[1/8]*8])} \x  \py{mtl([
+    [0, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0],
+    [1/6, 1/4, 0, 0, 1/3, 1/4, 0, 0],
+    [0, 0, 0, 0, 1/3, 1/3, 0, 1/3],
+    [0, 0, 0, 2/3, 0, 0, 1/3, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 1/3, 2/3]
+])} = \]
+\[\c b \begin{bmatrix} \f18 & \f18 &\f18 &\f18 &\f18 &\f18 &\f18 &\f18\end{bmatrix} = \pi\] 
+
+Thus, $\c f \pi$ is stationary on $\c f P$
+\end{solution} 
+
+\item \begin{solution}[]
+a)\tab \textbf{True}, because $\c p P_{ii} = 0 \implies$ that state $\c p i$ will have to move to some other \\
+state $\c g j \neq i$ with probability $\c p 1 - P_{ii} = 1$. After that, it will never return to $\c p i$ as $\c t P_{ji} = 0 \, \forall \, j \in S$, so its return probability is certainly not $1$. \\
+
+b)\tab \textbf{True}, since this means that all states are reachable from each other, thus they form one big communicating class, which means the chain is irreducible. Suppose that state $\c m i$ was transient, then it must never return to state $\c m i$ ever again. Suppose it ends up at state $\c g j \in S, j  \neq i$, which is possible since $\c g P_{ij} > 0$, then the probability of not returning to $\c m i$ is $\c g 1 - P_{ji} < 1$ \\
+
+Let $\c{violet} \mu = \max\limits_{j \in S} (1-P_{ji}) < 1$, then $\c{violet} \mbb{P}(T_i > k \mid X_0 = i) \leqslant \mu^{k}$ because if we are at state $\c m j$, then the probability of $\c m j \not\to i$ i.e. $\c m 1-P_{ji} \leqslant \mu$ \\
+
+Then, \[\c f \lim_{k \to \infty}  \mbb{P}(T_i > k \mid X_0 = i) =  \mbb{P}(T_i = \infty \mid X_0 = i) \leqslant \lim_{k \to \infty} \mu^k = 0\]
+Thus, $\c f \mbb{P}(T_i < \infty \mid X_0 = i) = 1 - \mbb{P}(T_i = \infty \mid X_0 = i) = 1$, which means state $\c m i$ is recurrent. \\
+
+c)\tab \textbf{True}, let $\c t P = \py{mtl([[0.5,0.5],[0,1]])}$ and $\c t \pi = \begin{bmatrix} 1 & 0 \end{bmatrix}$ \\
+Then, 
+\[\c g  \begin{bmatrix} 1 & 0 \end{bmatrix}  \py{mtl([[0.5,0.5],[0,1]])} =  \begin{bmatrix} 1 & 0 \end{bmatrix}\] 
+To show that this is unique, let $\c{violet} \pi = \begin{bmatrix} \lambda_1 & \lambda_2 \end{bmatrix}$, then to satisfy the stationary equation
+\[\c m \pi P =  \begin{bmatrix} \lambda_1 & \lambda_2 \end{bmatrix} \py{mtl([[0.5,0.5],[0,1]])} = \begin{bmatrix} \f{\lambda_1}{2} & \f{\lambda_1}{2} + \lambda_2 \end{bmatrix} \]
+This must equal $\c{violet} \pi$, so we have
+\[\c m \begin{bmatrix} \f{\lambda_1}{2} & \f{\lambda_1}{2} + \lambda_2 \end{bmatrix} =  \begin{bmatrix} \lambda_1 & \lambda_2 \end{bmatrix} \]
+Solving this system yields $\c r \lambda_1 = 0, \lambda_2 \in \mbb{R}$. However, we have the constraint that $\c r \lambda_1 + \lambda_2 = 1$ in order to be a valid distribution, which locks $\c r \lambda_2 = 1$, thus proving uniqueness.
+
+\end{solution}
+
+\end{enumerate}
+
+
+% THE DOCUMENT IS ESSENTIALLY DONE AT THIS POINT, NO NEED TO EDIT ANYTHING BELOW THIS______________________________________________________________________________________________
+ 
+\end{document}
