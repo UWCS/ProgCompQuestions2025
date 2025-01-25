@@ -6,7 +6,9 @@ Before beginning a track, Mump starts with a score of 0.
 
 Mump can start *anywhere* on the track, but must start somewhere on the track; that is, it's not possible for Mump to not start on a track. At least one cell must be visited. 
 
-Once Mump has started on a track, Mump must finish the track from that start! Mump can move forward either 2 or 3 cells. Why? Due to Mump's spirited energy, Mump cannot move only 1 cell forward and poor Mump cannot possibly move more than 3 cells at a time!
+Once Mump has started on a track, Mump must finish the track from that start! Mump can move forward either 2 or 3 cells. 
+
+Why? Due to Mump's spirited energy, Mump cannot move only 1 cell forward and poor Mump cannot possibly move more than 3 cells at a time!
 
 Your task is to determine the maximum score that Mump can achieve on given tracks. 
 
@@ -16,8 +18,10 @@ First line will contain the number of tracks $n$ ($1 \leq n \leq 4000$).
 
 The following $n \times 2$ lines will describe the $n$ tracks. Each track will take up 2 lines.
 
-The first line for each track $x$ contains the length ($l$) of $x$; $l$ is the number of cells that $x$ is made up of. We have $450 \leq l \leq 3000$.
+The first line for each track $x$ contains the length ($l$) of $x$; $l$ is the number of cells that $x$ is made up of. We have $450 \leq l \leq 3000$. 
+
 The second line for $x$ contains the scores of the cells of $x$. 
+
 For each score ($x_{i}$), we have $-1000 \leq x_{i} \leq 1000$.
 
 ### Output
