@@ -1,7 +1,7 @@
 import random
 from perlin_noise import PerlinNoise
 
-inputFile = "d.in"
+inputFile = "c.in"
 nMaps = 40
 
 hmFilter = lambda x: x > 0.1
