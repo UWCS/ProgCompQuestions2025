@@ -11,7 +11,7 @@
 
 
 
-<title>6</title>
+<title>5</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -352,16 +352,17 @@ display: none;
 </div>
 
 
-<div id="vi.-treejumper" class="section level1">
-<h1>VI. Treejumper</h1>
-<p><strong>Skiwi</strong> loves trees, so you decide to gift him a
-computer science tree rooted at 1. To make things exciting, you hide
-money in some of the nodes. Skiwi wants to collect all the money as
-quickly as possible—he’s on a deadline with an essay to write. Each edge
-takes him <strong>one second</strong> to traverse, and he <strong>starts
-at the root node (1)</strong>. What is the minimum amount of time Skiwi
-needs to collect all the money?</p>
-<p><strong>Note: Skiwi does not need to return to the root.</strong></p>
+<div id="v.-wall-o-buttons" class="section level1">
+<h1>V. Wall-o-buttons</h1>
+<p>A wall has <span class="math inline">\(n\)</span> buttons stacked
+vertically. <strong>Skiwi</strong> the Frog loves pressing buttons—but
+there’s a catch! Skiwi can press any button as long as the button
+directly above and directly below it (if they exist) remain unpressed.
+Skiwi wants to know how many ways he can press these buttons while
+satisfying this criterion.</p>
+<p>Two configurations are considered the same if the arrangement of
+pressed buttons <em>at the end</em> are the same.</p>
+<p>Since the answer may be very large, output it modulo <span class="math inline">\(10^9 + 7\)</span>.</p>
 <div id="input" class="section level3">
 <h3>Input</h3>
 <p>The first line contains <span class="math inline">\(t \\; (1
@@ -370,30 +371,45 @@ needs to collect all the money?</p>
 for each test case:</p>
 <ul>
 <li>The first line contains one integer <span class="math inline">\(n
-\\, (1 \leqslant n \leqslant 2 \cdot 10^5)\)</span>, the number of nodes
-in the tree.</li>
-<li>Then, <span class="math inline">\(n-1\)</span> lines follow, each
-containing two integers that are space-separated, <span class="math inline">\(u,v \\, (1 \leqslant u,v \leqslant n)\)</span>,
-denoting an edge between nodes <span class="math inline">\(u\)</span>
-and <span class="math inline">\(v\)</span>.</li>
+\\, (1 \leqslant n \leqslant 10^{18})\)</span>.</li>
 </ul>
+</div>
+<div id="subtasks" class="section level3">
+<h3>Subtasks</h3>
+<div id="subtask-1-40" class="section level4">
+<h4>Subtask 1 [40%]</h4>
+<p><span class="math inline">\(n \leqslant 10^5\)</span></p>
+</div>
+<div id="subtask-2-60" class="section level4">
+<h4>Subtask 2 [60%]</h4>
+<p>No further constraints.</p>
+</div>
 </div>
 <div id="output" class="section level3">
 <h3>Output</h3>
 <p>For each test case, output a single line containing one integer for
-each test case, representing the minimum time in seconds for Skiwi to
-grab all the money.</p>
+each test case, representing the number of ways to press the buttons
+<span class="math inline">\(\mod{10^9 + 7}\)</span>.</p>
 </div>
 <div id="example-input" class="section level3">
 <h3>Example Input</h3>
-<pre><code></code></pre>
+<pre><code>4
+1
+3
+5
+93821993237</code></pre>
 </div>
 <div id="example-output" class="section level3">
 <h3>Example Output</h3>
-<pre><code></code></pre>
+<pre><code>2
+5
+13
+642845733</code></pre>
 </div>
 <div id="note" class="section level3">
 <h3>Note</h3>
+<p>In the first case, there are <span class="math inline">\(2\)</span>
+options, either Skiwi presses the button or he doesn’t.</p>
 </div>
 <div id="skiwi" class="section level3">
 <h3>Skiwi</h3>
