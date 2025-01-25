@@ -1,12 +1,12 @@
 {
     "sample": 
     {
-        "max": 4,
+        "max": 2,
         "weight": 0.05
     },
     "larger":
     {
-        "max": 1000,
+        "max": 100,
         "weight": 0.95
     }
 }
